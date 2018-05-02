@@ -1,4 +1,12 @@
 #import "FFFastImageView.h"
+// Import from the FLAnimated image CocoaPod if it's available.
+#if __has_include(<FLAnimatedImage/FLAnimatedImageView.h>)
+#import <FLAnimatedImage/FLAnimatedImageView.h>
+// Import from the version within SDWebImage otherwise.
+#elif __has_include(<SDWebImage/FLAnimatedImageView.h>)
+#import <SDWebImage/FLAnimatedImageView.h>
+#endif
+
 
 @implementation FFFastImageView {
     BOOL hasSentOnLoadStart;
@@ -47,6 +55,25 @@
     }
 }
 
+- (void)setImageColor:(UIColor *)imageColor
+{
+    if (imageColor != nil) {
+        _imageColor = imageColor;
+        self.tintColor = self.imageColor;
+        super.image = [super.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    }
+}
+
+- (void)setImage:(UIImage *)image
+{
+    if (self.imageColor != nil) {
+        self.tintColor = self.imageColor;
+        super.image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    } else {
+        super.image = image;
+    }
+}
+
 - (void)setSource:(FFFastImageSource *)source {
     if (_source != source) {
         _source = source;
@@ -80,7 +107,6 @@
         hasCompleted = NO;
         hasErrored = NO;
         
-        // Load the new source.
         [self sd_setImageWithURL:_source.uri
                 placeholderImage:nil
                          options:options
