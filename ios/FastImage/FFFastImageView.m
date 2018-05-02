@@ -1,12 +1,4 @@
 #import "FFFastImageView.h"
-// Import from the FLAnimated image CocoaPod if it's available.
-#if __has_include(<FLAnimatedImage/FLAnimatedImageView.h>)
-#import <FLAnimatedImage/FLAnimatedImageView.h>
-// Import from the version within SDWebImage otherwise.
-#elif __has_include(<SDWebImage/FLAnimatedImageView.h>)
-#import <SDWebImage/FLAnimatedImageView.h>
-#endif
-
 
 @implementation FFFastImageView {
     BOOL hasSentOnLoadStart;
@@ -107,6 +99,7 @@
         hasCompleted = NO;
         hasErrored = NO;
         
+        // Load the new source.
         [self sd_setImageWithURL:_source.uri
                 placeholderImage:nil
                          options:options
