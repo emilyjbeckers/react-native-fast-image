@@ -2,10 +2,13 @@
 
 🚩 FastImage, performant React Native image component.
 
-[![npm](https://img.shields.io/npm/v/react-native-fast-image.svg?style=flat-square)](https://www.npmjs.com/package/react-native-fast-image)
-[![npm](https://img.shields.io/npm/dm/react-native-fast-image.svg?style=flat-square)](https://npmjs.com/package/react-native-fast-image)
+This is a fork of [DylanVann's FastImage library](https://github.com/DylanVann/react-native-fast-image) with an added feature for changing the tint color of the image.
+
+[![npm](https://img.shields.io/npm/v/react-native-fast-image.svg?style=flat-square)]()
 [![CircleCI](https://img.shields.io/circleci/project/github/DylanVann/react-native-fast-image.svg?style=flat-square)](https://circleci.com/gh/DylanVann/react-native-fast-image)
 [![license](https://img.shields.io/github/license/DylanVann/react-native-fast-image.svg?style=flat-square)](https://github.com/DylanVann/react-native-fast-image/blob/master/LICENSE)
+
+Original npm package can be found [here](https://www.npmjs.com/package/react-native-fast-image)
 
 <p align="center" >
   <img src="http://i.imgur.com/OkYqmCP.gif" title="Grid Demo" float=left>
@@ -45,14 +48,14 @@ and
 
 ```bash
 # Install
-yarn add react-native-fast-image
+yarn add react-native-fast-image-tinted
 
 # Automatic linking. (other linking methods listed below)
 react-native link
 ```
 
 ```jsx
-import FastImage from 'react-native-fast-image'
+import FastImage from 'react-native-fast-image-tinted'
 
 const YourImage = () =>
   <FastImage
@@ -199,16 +202,16 @@ Unfortunately for now the workaround to update the example is to run:
 npm pack
 
 # This makes a tarball like:
-# react-native-fast-image-1.0.0.tgz
+# react-native-fast-image-tinted-1.0.0.tgz
 
 # Move into the example:
 cd example
 
 # Install the tarball:
-npm install ../react-native-fast-image-1.0.0.tgz
+npm install ../react-native-fast-image-tinted-1.0.0.tgz
 ```
 
-To update while developing you can re-pack and reinstall the tarball. 
+To update while developing you can re-pack and reinstall the tarball.
 
 Hopefully [metro](https://github.com/facebook/metro) will add support for symlinks soon.
 
