@@ -7,6 +7,14 @@
 
 RCT_EXPORT_MODULE(FastImageView)
 
+- (FFFastImageViewManager*)init {
+    self = [super init];
+    
+    [SDImageCache sharedImageCache].config.maxCacheAge = 60*60*24*365; // 365 days
+    
+    return self;
+}
+
 - (FFFastImageView*)view {
     FFFastImageView* view = [[FFFastImageView alloc] init];
     view.contentMode = (UIViewContentMode) RCTResizeModeStretch;
